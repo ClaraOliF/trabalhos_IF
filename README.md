@@ -15,4 +15,4 @@
 * Time
 
 ## Janela Tkinter:
-![Interface]()
+![Interface](https://user-images.githubusercontent.com/80792083/153281136-6123370a-6a63-4bb0-b724-d11b7a67d39a.png)
