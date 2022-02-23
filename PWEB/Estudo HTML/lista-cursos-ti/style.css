@@ -1,0 +1,53 @@
+li  {
+    list-style-type: none;
+    display: inline-block; 
+    margin: 60px; 
+    width: 300px;
+    height: 700px;
+    margin-top: 10px;
+  }
+  
+ul h2:before {
+    content: '';  
+    display: inline-block;  
+    height: 30px;  
+    width: 30px;  
+    background-size: 28px;  
+    background-image: url("website-link-icon-png-13.jpg");  
+    background-repeat: no-repeat;  
+    padding-right: 8px;  
+  }
+
+ul p {
+  width: 310px;
+  font-size: 25px;
+}
+
+.central {
+  height: 135px;
+  width: 330px;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  text-transform:none;
+  border-bottom: none;
+}
+
+a img {
+  height: 70px;  
+  width: 70px;  
+  margin-left: 250px;
+}
+
+.titulo {
+  background-color: rgb(189, 185, 185);
+  color: white;
+  padding: 17px;
+  margin: 0px;
+  text-align: center;
+}
+
+ 
+
