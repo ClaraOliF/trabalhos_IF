@@ -1,0 +1,58 @@
+#principal .principal{
+    background-color:azure;
+    padding: 30px;
+    width: 50%;
+    margin: auto;
+    display: block;
+    text-align: center;
+    border: 1px solid #CCC;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.3);
+}
+
+.pergunta {
+    text-align: left;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: block;
+    padding: 2px;
+}
+
+.campo {
+    padding: 0.2em;      
+    border: 1px solid #CCC;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    font-size: 18px;
+}
+
+input, textarea {
+    color: rgb(63, 63, 63);
+}
+
+.foto {
+    width: 470px;
+    padding: 15px;
+    text-align: center;
+}
+
+#nome {
+    display: inline;
+}
+
+
+#titulo{
+    background-color: rgb(62, 136, 141);
+    color: aliceblue;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.3);
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+}
+
+
+body {
+    background-color: rgb(188, 224, 212);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="UTF-8">
+        <title>Teste Quiz</title>
+        <link rel="stylesheet" type="text/css" href="quiz.css">
+    </head>
+	<body>
+		
+	<div id="titulo">
+        <h1> Questionário de História </h1>
+    </div>  
+    
+<div id="principal">  
+    <form action="analise_post.php" method="post"> 
+        <h4>Será que você consegue acertar todas essas perguntas básicas de história?</h4> 
+        <div id="nome">             
+            <label>Qual o seu <strong>nome</strong>?</label>
+            <input name="nome" type="text" class="campo" >
+            <img src="imagens/do.webp" class="foto">
+        </div>
+
+        <div class="pergunta">
+        <label> 1. Quanto tempo duraram as duas Guerras Mundiais <strong>juntas</strong>?</label><br><br>
+
+        <input type="radio" name="ans1" value="A">
+         <label> Aproximadamente 7 anos.</label><br>  
+        <input type="radio" name="ans1" value="B">
+         <label> Aproximadamente 8 anos.</label><br>      
+        <input type="radio" name="ans1" value="C">
+         <label> Aproximadamente 9 anos.</label><br>
+        <input type="radio" name="ans1" value="D">
+         <label> Aproximadamente 10 anos.</label><br>
+        <input type="radio" name="ans1" value="E">
+         <label> Aproximadamente 11 anos.</label><br>
+        </div>
+
+        <div class="pergunta">
+        <label> 2. Selecione a denominação que se dá pela descrição  (type submit)<strong>" ... é um tipo de sistema agrícola baseado em uma monocultura de exportação mediante a utilização de latifúndios e mão de obra escrava."</strong>?</label>
+        <select name="ans2" value=0>
+            <option value=0> Resposta...</option>
+            <option value="A">Sistematização</option>
+            <option value="B">Colonização</option>
+            <option value="C">Platation</option>
+            <option value="D">Agrossistema</option>
+            <option value="E">Mono-agricultura</option>
+
+        </select>
+        <img src="imagens/plantation.webp" class="foto">        
+        </div>
+
+        <div class="pergunta">
+        <label> 3. Selecione os nomes de antigos presidentes brasileiros:</label><br><br>
+        
+        <input type='checkbox' name="ans3[]" value="1"> <!--V-->
+        <label> Floriano Peixoto</label><br> 
+
+        <input type='checkbox' name="ans3[]" value="2"> <!--F-->
+        <label> Fernando de Melo Viana</label><br> 
+
+        <input type='checkbox' name="ans3[]" value="3"> <!--F-->
+        <label> Estácio Coimbra</label><br>
+
+        <input type='checkbox' name="ans3[]" value="4"> <!--V-->
+        <label> João Goulart </label><br>
+
+        <input type='checkbox' name="ans3[]" value="5"> <!--V-->
+        <label> Júlio Prestes</label><br>          
+
+        <input type='checkbox' name="ans3[]" value="6"> <!--V-->
+        <label> Washington Luís</label><br> 
+
+        <input type='checkbox' name="ans3[]" value="7"> <!--F-->
+        <label> Rosa e Silva</label><br> 
+
+        <input type='checkbox' name="ans3[]" value="8"> <!--V-->
+        <label> José Sarney</label><br> 
+
+        <input type='checkbox' name="ans3[]" value="9"> <!--F-->
+        <label> José Franco</label> 
+
+        </div>     
+
+        <div class="pergunta">
+        <label> 4. Aonde ocorrerram as batalhas mais sangrentas do exército <strong>brasileiro</strong>?</label><br><br>
+        <input type="radio" name="ans4" value="A">
+         <labe>Segunda Guerra mundial.</labe><br>  
+        <input type="radio" name="ans4" value="B">
+         <label>Guerra do Uruguai.</label><br>      
+        <input type="radio" name="ans4" value="C">
+         <label>Guerra do Paraguai.</label><br>
+        <input type="radio" name="ans4" value="D">
+         <label>Guerra de Canudos.</label><br>
+         <input type="radio" name="ans4" value="E">
+         <label>Guerra de Independência do Brasil.</label><br>
+        </div>
+
+        <div class="pergunta">
+        <label> 5. Selecione a <strong>data</strong> da revolução Russa:</label><br>
+        <img src="imagens/revrussalenindiscursa-cke.webp" class="foto"><br>
+        <label>Selecione:</label>
+        <input type="date" class="campo" name="ans5" value=null ><br>
+        </div>
+
+        <input type="submit" class="campo" value="Submit"> <input type="reset" class="campo">
+    </form> 
+</div>
+
+		
+	</body>
+</html>
