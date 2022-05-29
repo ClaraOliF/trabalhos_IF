@@ -10,11 +10,10 @@
             $sql->bind_param("s", $valor);
             $sql->execute();
             $resposta = "Novo valor foi atualizado.";
+            $sql->close();   
         }               
     } else {
         $resposta = "A chave ".$chave." não está cadastrada em nosso banco de dados.";
     }  
-
-    $sql->close();   
     header("Location:index.php?resp=$resposta");
 ?>
