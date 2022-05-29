@@ -10,7 +10,7 @@
         $sql->bind_param("ss", $chave, $valor);
         $sql->execute();
         $resposta = "Nova chave foi cadastrada com sucesso.";
+        $sql->close();      
     }  
-    $sql->close();    
     header("Location:index.php?resp=$resposta");
 ?>
