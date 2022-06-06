@@ -9,38 +9,79 @@
     <h1>Adicionando outro item ao catálogo de produtos</h1>
 
     <?php
-        require_once "conexao.php";  
+      require_once "funcoes.php";
     ?>
 
-    <form action="' . $_SERVER['PHP_SELF'] . '" method="post" name="cadastro">
-        <!--inserir imagem-->
-        <label for="produto">
-            Produto: <input type="text" name = "produto">
+    <form action="" method="post" name="cadastro_produto" enctype="multipart/form-data">
+        <label for="pic" class="inserir">
+            Enviar imagem: <input type="file" name="pic" accept="image/*">
+        </label>   
+        <label for="produto" class="inserir">
+            Produto: <input type="text" name="produto">
         </label>
-        <label for="preco">
-            Preço: <input type="text" name = "preco">
+        <label for="descricao" class="inserir ">
+            Descricão: <input type="textfield" name="descricao">
         </label>
-        <label for="fatias">
-            Fatias: <input type="number" name = "fatias">
+        <label for="preco" class="inserir">
+            Preço: <input type="number" step=0.01 min=0 name="preco">
         </label>
-        <label for="data">
-            Data: <input type="date" name = "data">
+        <label for="fatias"class="inserir" >
+            Fatias: <input type="number" min=0 name="fatias">
         </label>
-        <label for="descricao">
-            Descricão: <input type="textfield" name = "produto">
+        <label for="tempo" class="inserir">
+            Tempo de produção(Em dias): <input type="number" min=0 name="tempo">
         </label>
-        <label for="categorias">
-            Escolha a categoria: <input type="radio" name="categorias">
-        </label>
-
-        <input type="submit" value="Criar">
-        <a href="index.php"><button>Cancelar</button></a>
-        
+    
+    <?php
+    //Inserindo categorias 
+        $resposta = take_tags();
+        while ($row = mysqli_fetch_assoc($resposta)) { 
+            $categoria = $row['nome'];
+            echo "<input type='radio' name='categoria' value=$categoria>
+            <label for='categoria'>$categoria</label><br>";
+            }
+    ?>
+        <input type="submit" value="Adicionar"> 
     </form>
+        <a href="index.php"><button>Cancelar</button></a>
 
-    <!--
-    validar entradas de input
-    encerrar conexão
-    -->
+    <?php 
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $produto = trim($_POST['produto']);
+        $descricao = trim($_POST['descricao']);
+        $preco = trim($_POST['preco']);
+        $fatias = trim($_POST['fatias']);
+        $tempo = trim($_POST['tempo']);
+        $inclusao = date("m.d.y"); 
+        $categoria = $_POST['categoria'];
+        $img = $_FILES['pic'];
+
+        // Validação de dados
+        if(!empty($produto) && !empty($descricao) && !empty($preco) && !empty($fatias) 
+        && !empty($tempo) && !empty($inclusao) && !empty($categoria) && !empty($_FILES['pic'])) {
+
+            if ($_FILES['pic']["size"] <= 20000000) { // Verificand o tamanho do arquivo 
+                $ext = strtolower(pathinfo($_FILES['pic']['name'],PATHINFO_EXTENSION));
+                if($ext == "jpg" || $ext == "png" || $ext == "jpeg" || $ext == "webp"){
+                    $new_name = date("Y.m.d-H.i.s") . $ext; //Definindo um novo nome para o arquivo
+                    $dir = './imagens/'; //Diretório para uploads 
+                    move_uploaded_file($_FILES['pic']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo
+                    $img = $dir.$new_name;
+
+                    // Enviando dados para cadastro
+                    cadastro($img, $produto, $descricao, $preco, $fatias, $tempo, $categoria, $inclusao);
+                    header('Location:index.php');
+                } else{
+                    echo "Formato de arquivo inválido!";
+                }
+            } else {
+                echo "Arquivo de Imagem grande demais.";
+            }
+        } else {
+            echo "Preencha todos os campos para que o produto possa ser criado!";
+        }
+        //encerrar conexão 
+    }
+    ?>   
 </body>
 </html>
