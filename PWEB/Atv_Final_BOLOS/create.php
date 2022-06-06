@@ -29,7 +29,7 @@
             Fatias: <input type="number" min=0 name="fatias">
         </label>
         <label for="tempo" class="inserir">
-            Tempo de produção(Em dias): <input type="number" min=0 name="tempo">
+            Tempo mínimo para entrega(Em dias): <input type="number" min=0 name="tempo">
         </label>
     
     <?php
@@ -63,11 +63,10 @@
             if ($_FILES['pic']["size"] <= 20000000) { // Verificand o tamanho do arquivo 
                 $ext = strtolower(pathinfo($_FILES['pic']['name'],PATHINFO_EXTENSION));
                 if($ext == "jpg" || $ext == "png" || $ext == "jpeg" || $ext == "webp"){
-                    $new_name = date("Y.m.d-H.i.s") . $ext; //Definindo um novo nome para o arquivo
+                    $new_name = date("Y.m.d-H.i.s").".".$ext; //Definindo um novo nome para o arquivo
                     $dir = './imagens/'; //Diretório para uploads 
                     move_uploaded_file($_FILES['pic']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo
-                    $img = $dir.$new_name;
-
+                    $img = $new_name;
                     // Enviando dados para cadastro
                     cadastro($img, $produto, $descricao, $preco, $fatias, $tempo, $categoria, $inclusao);
                     header('Location:index.php');
