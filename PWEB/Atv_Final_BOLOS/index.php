@@ -5,6 +5,7 @@
     <title>Site de confeitaria</title>
 </head>
 <body>
+    <!--<p>Depois adicionar retorno de mensagem da última ação realizada</p>-->
     <table>
     <?php 
         include "exibicao.php";
