@@ -5,15 +5,15 @@
     <title>Site de confeitaria</title>
 </head>
 <body>
-
+    <table>
     <?php 
         include "exibicao.php";
     ?>
+    </table>
 
-    <a href="create.php?">
+    <a href="create.php">
         <input type="button" value="+">
     </a>
 
-    
 </body>
 </html>
