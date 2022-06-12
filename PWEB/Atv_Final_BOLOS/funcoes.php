@@ -2,7 +2,7 @@
 
 // Buscar linhas no BD das categorias
 function take_tags(){
-    require_once "conexao.php";  
+    require "conexao.php";  
     $sql = "SELECT * FROM categoria";
     $result =  mysqli_query($conn, $sql); 
 
@@ -27,27 +27,38 @@ function cadastro($img, $produto, $descricao, $preco, $fatias, $tempo, $categori
     $sql->close();      
 }
 
-function update()// inserir parametro que vai ser passado desde a página exibicao{
-    // Verificar se foi possível chegar nesta função
-    // Realizar o SELECT a partir do valor de ID informado pelo parâmetro
-    // Ver se o ID existe
-    // Ir para a página EDITAR.PHP
-    //  - Nela, cê vai inserir novo formulário com valores já definidos identificados no BD e então enviar
-    //  - Verificar se os valores não são nulos(e se foram realmente alterados -  tlvz não seja necessario)
-    //  - Enviar diretamente para cá os valores novos
-    // E finalmente realizar UPDATE aqui
-    echo "teste editar";
+function update($img, $produto, $descricao, $preco, $fatias, $tempo, $categoria, $inclusao){
 
+    // Nesse caso, a diferença é que existirá o id como um parâmetro também
+    echo $produto."<br>";
+    echo $descricao."<br>";
+    echo $preco."<br>";
+    echo $fatias."<br>";
+    echo $tempo."<br>";
+    echo $inclusao."<br>";
+    echo $categoria."<br>";
+    echo strval($img);
 }
 
 function deletar(){
-    echo "teste delete";
-    // Verificar de foi possível chegar na função
-    // SELECT
-    // Verificar se existe o ID
-    // DROP SQL DELETE
-    // header("Location:Index.php");
 
 }
+
+function select_by_id($id){
+    require "conexao.php";
+    $valores=array();
+    $sql = "SELECT * FROM bolos WHERE ID=".$id;
+    $resultado =  mysqli_query($conn, $sql);
+    if(!empty($resultado)){
+        while($row = mysqli_fetch_assoc($resultado)) {
+            foreach($row as $chave => $value){
+                array_push($valores,$value);
+                }
+            }
+        }
+    return $valores;
+}
+
+
 
 ?>
