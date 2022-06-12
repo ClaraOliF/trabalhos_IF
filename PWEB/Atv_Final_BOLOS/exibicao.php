@@ -15,7 +15,7 @@
                 if($chave == $row['imagem']){
                     echo "<tr>
                             <th>".$chave."</th>
-                            <th><img src='imagens/". $row['imagem']."'/></th>
+                            <th><img src=imagens/". $row['imagem']."></th>
                         </tr>";
                 } elseif($chave=='ID'){
                     $linha_id = $valor;
@@ -29,23 +29,23 @@
                             <th><strong>".$chave."</strong></th>
                             <th>".$valor."</th>
                         </tr>";
-                   }
-            }
-            // Adicionando botões de DELETAR e EDITAR
-            //echo "<tr>
-                    //<th>
-                       // <a href='deletar.php?id=".$linha_id."'>
-                        //q<button>Deletar</button>
-                   // </th>";
-            //echo   "<th>
-                       // <a href=header("Location:editar.php?id='.$linha_id.")>
-                        //<button>Editar</button></a>
-                    //</th>
-                //</tr>";
+                }
+            }            
+
+        // Adicionando botão de DELETAR 
+        echo "<tr><th><form action='delete.php' method='post'>
+                <button type='submit' name='id' value=".$linha_id.">Deletar</button>
+                </form><th>";
+        // Adicionando botão de EDITAR
+        echo "<th><form action='editar.php' method='post'>
+                <button type='submit' name='id' value=".$linha_id.">Editar</button>
+                </form><th></tr>";
+                    
         } 
-    } else {
+    }else {
         echo "Ainda não existe nenhum produto cadastrado";
     }  
+
     mysqli_close($conn);
     ?>
 </body>
