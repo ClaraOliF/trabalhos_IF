@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="estilo.css">
 </head>
 <body>
     <?php
@@ -13,14 +14,16 @@
         while($row = mysqli_fetch_assoc($resultado)) {
             foreach($row as $chave => $valor){
                 if($chave == $row['imagem']){
-                    echo "<tr>
-                            <th>".$chave."</th>
-                            <th><img src=imagens/". $row['imagem']."></th>
+                   echo "<div class='catalogo'>
+                        <tr>
+                            <th><?php echo $chave ?></th>
+                            <th><img src='/imagens/".$valor."'></th>
                         </tr>";
+                    
                 } elseif($chave=='ID'){
                     $linha_id = $valor;
                     echo "<tr>
-                            <th><strong>".$chave."</strong></th>
+                            <th><strong>". $chave."</strong></th>
                             <th>".$valor."</th>
                         </tr>";
                 }
@@ -29,6 +32,7 @@
                             <th><strong>".$chave."</strong></th>
                             <th>".$valor."</th>
                         </tr>";
+
                 }
             }            
 
@@ -39,7 +43,8 @@
         // Adicionando botão de EDITAR
         echo "<th><form action='editar.php' method='post'>
                 <button type='submit' name='id' value=".$linha_id.">Editar</button>
-                </form><th></tr>";
+                </form><th></tr>
+                </div>" ;
                     
         } 
     }else {
