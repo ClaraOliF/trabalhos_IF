@@ -27,23 +27,16 @@ function cadastro($img, $produto, $descricao, $preco, $fatias, $tempo, $categori
     $sql->close();      
 }
 
-function update($img, $produto, $descricao, $preco, $fatias, $tempo, $categoria, $inclusao){
-
-    // Nesse caso, a diferença é que existirá o id como um parâmetro também
-    echo $produto."<br>";
-    echo $descricao."<br>";
-    echo $preco."<br>";
-    echo $fatias."<br>";
-    echo $tempo."<br>";
-    echo $inclusao."<br>";
-    echo $categoria."<br>";
-    echo strval($img);
+function update($img, $produto, $descricao, $preco, $fatias, $tempo, $categoria,$id){
+    require "conexao.php";
+    $sql = $conn->prepare("UPDATE bolos SET imagem=? ,produto=? ,descricao=? , 
+                        valor=? , fatias=? ,tempo_dias=? ,categoria=? WHERE ID='{$id}'");
+    $sql->bind_param("sssdiis",$img, $produto, $descricao, $preco, $fatias, $tempo, $categoria);
+    $sql->execute();
+    $sql->close();   
 }
 
-function deletar(){
-
-}
-
+# Selecionando produtos
 function select_by_id($id){
     require "conexao.php";
     $valores=array();
@@ -58,7 +51,4 @@ function select_by_id($id){
         }
     return $valores;
 }
-
-
-
 ?>
