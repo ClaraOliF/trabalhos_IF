@@ -46,15 +46,8 @@
         } else{
             $categoria = $_POST['categoria'];
         }
-
-        $inclusao = date("m.d.y");
-
-        if($_FILES['pic'] == NULL){
-            $img = $valores[0];
-            
-        } else{
-            $img = $_FILES['pic'];
-            if ($_FILES['pic']["size"] <= 20000000 && $_FILES['pic']["size"] != TRUE) { // Verificand o tamanho do arquivo
+        
+        if ($_FILES['pic']["size"] <= 20000000 && $_FILES['pic']["size"] != 0) { // Verificand o tamanho do arquivo
                 $ext = strtolower(pathinfo($_FILES['pic']['name'],PATHINFO_EXTENSION));
                 if($ext == "jpg" || $ext == "png" || $ext == "jpeg" || $ext == "webp"){
                     $new_name = date("Y-m-d_H-i-s").".".$ext; //Definindo um novo nome para o arquivo
@@ -62,10 +55,12 @@
                     move_uploaded_file($_FILES['pic']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo                   
                     $img = $new_name;
                 }
-            }    
-        }        
-        update($img, $produto, $descricao, $preco, $fatias, $tempo, $categoria, $inclusao,$id);
-        //header('Location:index.php');
+            }  else {
+                $img = $valores[0];
+            }  
+                
+        update($img, $produto, $descricao, $preco, $fatias, $tempo, $categoria,$id);
+        header("Location:index.php?");
     }
 ?>
 </body>
