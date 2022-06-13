@@ -1,0 +1,13 @@
+
+th {
+    display:block;
+}
+tr {
+    display: inline-block;
+    width: 150px;
+}
+.catalogo {
+    padding: 10px;
+    border-bottom: 2px;
+    border-color: black;
+}
