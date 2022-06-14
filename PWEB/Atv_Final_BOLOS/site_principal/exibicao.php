@@ -13,7 +13,7 @@
     if(!empty($resultado)){
         while($row = mysqli_fetch_assoc($resultado)) {
             foreach($row as $chave => $valor){ // erro está aqui
-                if($chave == $row['imagem']){
+                if($valor == $row['imagem']){
                    echo '<div>
                         <tr>
                             <td>'.$chave.'></td>
