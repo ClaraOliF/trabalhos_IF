@@ -8,7 +8,7 @@
 <?php
     if(isset($_POST['id'])){
         $id = $_POST['id'];
-        require_once "funcoes.php";
+        require_once "../funcoes.php";
         $valores = select_by_id($id);
         
         if(empty($_POST['produto'])){
@@ -47,13 +47,18 @@
             $categoria = $_POST['categoria'];
         }
         
-        if ($_FILES['pic']["size"] <= 20000000 && $_FILES['pic']["size"] != 0) { // Verificand o tamanho do arquivo
+        if ($_FILES['pic']["size"] <= 20000000 && $_FILES['pic']!=0) { // Verificando o tamanho do arquivo
                 $ext = strtolower(pathinfo($_FILES['pic']['name'],PATHINFO_EXTENSION));
                 if($ext == "jpg" || $ext == "png" || $ext == "jpeg" || $ext == "webp"){
                     $new_name = date("Y-m-d_H-i-s").".".$ext; //Definindo um novo nome para o arquivo
-                    $dir = './imagens/'; //Diretório para uploads
+                    $dir = '../imagens/'; //Diretório para uploads
                     move_uploaded_file($_FILES['pic']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo                   
                     $img = $new_name;
+                    // Excluindo imagem anterior na pasta
+                    $arquivo = '../imagens/'.$valores[0];
+                    if(file_exists($arquivo)){
+                        unlink($arquivo);
+                      }
                 }
             }  else {
                 $img = $valores[0];
