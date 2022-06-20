@@ -9,7 +9,7 @@
     <h1>Adicionando outro item ao catálogo de produtos</h1>
 
     <?php
-       require_once "funcoes.php";
+       require "../funcoes.php";
        error_reporting(E_ERROR | E_PARSE);
     ?>
 
@@ -30,7 +30,7 @@
             Fatias: <input type="number" min=0 name="fatias">
         </label>
         <label for="tempo" class="inserir">
-            Tempo mínimo de preparo(Em dias): <input type="number" min=0 name="tempo">
+            Tempo médio de preparo(Em dias): <input type="number" min=0 name="tempo">
         </label>
     
     <?php
@@ -53,24 +53,29 @@
         $preco = trim($_POST['preco']);
         $fatias = trim($_POST['fatias']);
         $tempo = trim($_POST['tempo']);
-        $inclusao = date("m.d.y"); 
+        $inclusao = date("m-d-y"); 
         $categoria = $_POST['categoria'];
         $img = $_FILES['pic'];
 
         // Validação de dados
         if(!empty($produto) && !empty($descricao) && !empty($preco) && !empty($fatias) 
-        && !empty($tempo) && !empty($inclusao) && !empty($categoria) && !empty($_FILES['pic'])) {
+        && !empty($tempo) && !empty($inclusao) && !empty($categoria)) {
 
-            if ($_FILES['pic']["size"] <= 20000000) { // Verificand o tamanho do arquivo 
+            if ($_FILES['pic']["size"] <= 20000000 && $_FILES['pic']["size"] != 0) { // Verificand o tamanho do arquivo 
                 $ext = strtolower(pathinfo($_FILES['pic']['name'],PATHINFO_EXTENSION));
                 if($ext == "jpg" || $ext == "png" || $ext == "jpeg" || $ext == "webp"){
                     $new_name = date("Y-m-d_H-i-s").".".$ext; //Definindo um novo nome para o arquivo
-                    $dir = './imagens/'; //Diretório para uploads 
+                    $dir = '../imagens/'; //Diretório para uploads 
                     move_uploaded_file($_FILES['pic']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo
                     $img = $new_name;
-                    // Enviando dados para cadastro
-                    cadastro($img, $produto, $descricao, $preco, $fatias, $tempo, $categoria, $inclusao);
-                    header('Location:index.php');
+                    $arquivo = '../imagens/'.$img;
+                    if(file_exists($arquivo)){
+                        // Enviando dados para cadastro
+                        cadastro($img, $produto, $descricao, $preco, $fatias, $tempo, $categoria, $inclusao);
+                        header('Location:index.php');
+                      } else {
+                            echo "Upload de imagem não foi realizado".$img;
+                      }
                 } else{
                     echo "Formato de arquivo inválido!";
                 }
