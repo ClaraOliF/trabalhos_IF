@@ -1,13 +1,14 @@
 
-th {
-    display:block;
+img {
+    width: 200px;
 }
-tr {
-    display: inline-block;
-    width: 150px;
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 13px;
+
 }
 .catalogo {
-    padding: 10px;
-    border-bottom: 2px;
-    border-color: black;
+    background-color: aquamarine;
+    margin:10px;
 }
