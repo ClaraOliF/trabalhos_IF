@@ -1,0 +1,50 @@
+body {
+    background-color: rgb(166, 196, 235);
+}
+
+form {
+    background-color: antiquewhite;
+    padding: 20px;
+    width:300px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    align-items: 100%;
+    box-shadow: 5px 5px 5px rgb(67, 152, 185);
+    cursor: pointer;
+    text-align: center;
+    color: rgb(27, 71, 88);
+    border-style: solid;
+    border-color:rgb(245, 242, 242);
+    border-width: 4px;
+    margin-top: 250px;
+    width: 50%;
+    margin-left:420px;
+}
+
+input {
+    background-color: aliceblue;
+    color: rgb(35, 78, 95);
+}
+
+.pic {
+    text-align: center;
+    border-style: solid;
+    border-color:cadetblue;
+    border-width: 2px;
+    padding: 5px;
+}
+
+.resp {
+    background-color: antiquewhite;
+    padding: 20px;
+    width:300px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    align-items: 100%;
+    box-shadow: 5px 5px 5px rgb(67, 152, 185);
+    text-align: center;
+    color: rgb(27, 71, 88);
+    border-style: solid;
+    border-color:rgb(245, 242, 242);
+    border-width: 4px;
+    width: 50%;
+    margin-left:420px;
+}
